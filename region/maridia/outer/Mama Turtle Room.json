@@ -53,17 +53,19 @@
       "nodeType": "junction",
       "nodeSubType": "junction",
       "note": "Out of the water, on the top right ledge above item."
+    },
+    {
+      "id": 7,
+      "name": "Top Item Grapple Junction",
+      "nodeType": "junction",
+      "nodeSubType": "junction",
+      "note": "Grappling below the top item."
     }
   ],
   "obstacles": [
     {
       "id": "A",
       "name": "Mama Turtle Sleeping",
-      "obstacleType": "abstract"
-    },
-    {
-      "id": "B",
-      "name": "Get on top of the Grapple Block",
       "obstacleType": "abstract"
     }
   ],
@@ -99,7 +101,8 @@
       "from": 2,
       "to": [
         {"id": 1},
-        {"id": 6}
+        {"id": 6},
+        {"id": 7}
       ]
     },
     {
@@ -114,13 +117,15 @@
         {"id": 2},
         {"id": 3},
         {"id": 5},
-        {"id": 6}
+        {"id": 6},
+        {"id": 7}
       ]
     },
     {
       "from": 5,
       "to": [
-        {"id": 2}
+        {"id": 2},
+        {"id": 7}
       ]
     },
     {
@@ -128,6 +133,15 @@
       "to": [
         {"id": 2},
         {"id": 3},
+        {"id": 6},
+        {"id": 7}
+      ]
+    },
+    {
+      "from": 7,
+      "to": [
+        {"id": 2},
+        {"id": 5},
         {"id": 6}
       ]
     }
@@ -200,8 +214,7 @@
       "requires": [
         "Gravity",
         "SpaceJump"
-      ],
-      "clearsObstacles": ["B"]
+      ]
     },
     {
       "id": 5,
@@ -228,7 +241,6 @@
           ]}
         ]}
       ],
-      "clearsObstacles": ["B"],
       "devNote": "This could have a few more excess frames if not getting on top of the block to go to 2."
     },
     {
@@ -258,7 +270,6 @@
           ]}
         ]}
       ],
-      "clearsObstacles": ["B"],
       "devNote": "This could have a few more excess frames if not getting on top of the block to go to 2."
     },
     {
@@ -275,7 +286,6 @@
         "canShinechargeMovement",
         {"shinespark": {"frames": 60}}
       ],
-      "clearsObstacles": ["B"],
       "flashSuitChecked": true,
       "devNote": "This could have a few more excess frames if not getting on top of the block to go to 2."
     },
@@ -305,7 +315,6 @@
           ]}
         ]}
       ],
-      "clearsObstacles": ["B"],
       "devNote": [
         "This could have a few more excess frames if not getting on top of the block to go to 2.",
         "This runway length is just an estimate of the worst case scenario for difficulties that can't use canStutterWaterShineCharge."
@@ -338,7 +347,6 @@
           ]}
         ]}
       ],
-      "clearsObstacles": ["B"],
       "devNote": "This could have a few more excess frames if not getting on top of the block to go to 2."
     },
     {
@@ -356,7 +364,6 @@
         "h_canArtificialMorphIBJ",
         "h_canArtificialMorphBombHorizontally"
       ],
-      "clearsObstacles": ["B"],
       "flashSuitChecked": true,
       "note": [
         "Get into position as close to the center of the room as possible while not being too close to any baby turtles.",
@@ -378,7 +385,7 @@
         "h_canArtificialMorphSpringBall",
         "h_canArtificialMorphIBJ"
       ],
-      "clearsObstacles": ["A", "B"],
+      "clearsObstacles": ["A"],
       "flashSuitChecked": true,
       "note": [
         "Place a bomb next to one of the baby turtles, then use spring ball to get on Mama Turtle's back.",
@@ -645,13 +652,18 @@
             "canCarefulJump",
             "canDisableEquipment"
           ]},
-          "canUseGrapple",
           "canWalljump",
           "SpaceJump"
-        ]},
-        {"obstaclesCleared": ["B"]}
+        ]}
       ],
       "note": "Get a bit of run speed on the block and jump to the right ledge. If you miss the ledge, try to shoot the block to still collect the item."
+    },
+    {
+      "link": [2, 7],
+      "name": "Base",
+      "requires": [
+        "canUseGrapple"
+      ]
     },
     {
       "id": 25,
@@ -707,16 +719,15 @@
     },
     {
       "id": 28,
-      "link": [4, 2],
+      "link": [4, 7],
       "name": "Grapple",
       "requires": [
-        "Grapple",
+        "canUseGrapple",
         {"or": [
           "HiJump",
           "canPreciseGrapple"
         ]}
       ],
-      "clearsObstacles": ["B"],
       "note": [
         "If Mama Turtle is in her starting location, stand on the rightmost side of her to be aligned below the grapple block.",
         "With a miss, if you havent moved horizontally, simply fall straight down to land safely back on to her."
@@ -728,8 +739,7 @@
       "name": "Space Jump",
       "requires": [
         "SpaceJump"
-      ],
-      "clearsObstacles": ["B"]
+      ]
     },
     {
       "id": 30,
@@ -738,7 +748,6 @@
       "requires": [
         "canJumpIntoIBJ"
       ],
-      "clearsObstacles": ["B"],
       "note": [
         "Once out of the water, jump into an IBJ.",
         "With a miss, if you haven't moved horizontally, simply fall straight down to land safely back on Mama Turtle."
@@ -752,7 +761,6 @@
         "HiJump",
         "canSpringBallJumpMidAir"
       ],
-      "clearsObstacles": ["B"],
       "note": [
         "Spring Ball jump from Mama Turtle's back.",
         "With a fail, if you haven't moved horizontally, simply fall straight down to land safely back on Mama Turtle."
@@ -811,13 +819,6 @@
           {"and": [
             "HiJump",
             "canCarefulJump"
-          ]},
-          {"and": [
-            "canUseGrapple",
-            {"or": [
-              "HiJump",
-              "canPreciseGrapple"
-            ]}
           ]}
         ]}
       ]
@@ -828,18 +829,16 @@
       "name": "Base",
       "requires": [
         "SpaceJump"
-      ],
-      "clearsObstacles": ["B"]
+      ]
     },
     {
       "id": 43,
-      "link": [5, 2],
+      "link": [5, 7],
       "name": "Grapple, Mama Turtle is Sleeping",
       "requires": [
         "canUseGrapple",
         {"obstaclesNotCleared": ["A"]}
       ],
-      "clearsObstacles": ["B"],
       "note": "Grappling the block does not require canPreciseGrapple if Mama Turtle is asleep, as there is no risk of death on a miss."
     },
     {
@@ -864,7 +863,6 @@
         "SpeedBooster",
         "canWalljump"
       ],
-      "clearsObstacles": ["B"],
       "note": [
         "Briefly run on the top ledge on either side (left is slightly easier) then jump and wall jump on the grapple block."
       ]
@@ -900,8 +898,7 @@
       "requires": [
         "canSpringwall",
         "canSpringFling"
-      ],
-      "clearsObstacles": ["B"]
+      ]
     },
     {
       "id": 41,
@@ -911,7 +908,6 @@
         "h_canMaxHeightSpringBallJump",
         "canSpringFling"
       ],
-      "clearsObstacles": ["B"],
       "note": "Time a pause before jumping to give a significant momentum boost in order to reach the Grapple Block."
     },
     {
@@ -926,7 +922,6 @@
         "canInsaneWalljump",
         "canCWJ"
       ],
-      "clearsObstacles": ["B"],
       "note": [
         "Perform a running stationary spinjump from a precise spot, then a CWJ with slightly more speed off the wall one tile further out.",
         "This makes it possible to just barely walljump off the grapple block."
@@ -953,7 +948,6 @@
       "link": [6, 2],
       "name": "Base",
       "requires": [
-        "canPreciseGrapple",
         "SpaceJump"
       ],
       "devNote": "Need to consider other transit options: springball, HBJ."
@@ -993,6 +987,44 @@
         "From the safe spot above the item, use a Power Bomb or shoot down the wall to break the item block.",
         "Spin jump down and collect the item, then walljump back up; or carefully use SpaceJump."
       ]
+    },
+    {
+      "link": [6, 7],
+      "name": "Grapple",
+      "requires": [
+        "canPreciseGrapple"
+      ]
+    },
+    {
+      "link": [6, 7],
+      "name": "Grapple, Mama Turtle is Sleeping",
+      "requires": [
+        "canUseGrapple",
+        {"obstaclesNotCleared": ["A"]}
+      ],
+      "note": "Grappling the block does not require canPreciseGrapple if Mama Turtle is asleep, as there is no risk of death on a miss."
+    },
+    {
+      "link": [7, 1],
+      "name": "Base",
+      "requires": []
+    },
+    {
+      "link": [7, 2],
+      "name": "Base",
+      "requires": [
+        "canPreciseGrapple"
+      ]
+    },
+    {
+      "link": [7, 5],
+      "name": "Base",
+      "requires": []
+    },
+    {
+      "link": [7, 6],
+      "name": "Base",
+      "requires": []
     }
   ],
   "nextStratId": 45,
