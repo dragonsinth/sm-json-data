@@ -1005,11 +1005,6 @@
       "note": "Grappling the block does not require canPreciseGrapple if Mama Turtle is asleep, as there is no risk of death on a miss."
     },
     {
-      "link": [7, 1],
-      "name": "Base",
-      "requires": []
-    },
-    {
       "link": [7, 2],
       "name": "Base",
       "requires": [
