@@ -124,6 +124,7 @@
     {
       "from": 5,
       "to": [
+        {"id": 1},
         {"id": 2},
         {"id": 7}
       ]
@@ -842,9 +843,15 @@
       "note": "Grappling the block does not require canPreciseGrapple if Mama Turtle is asleep, as there is no risk of death on a miss."
     },
     {
+      "link": [5, 1],
+      "name": "Base",
+      "requires": []
+    },
+    {
       "id": 36,
-      "link": [5, 2],
+      "link": [5, 1],
       "name": "Wall Jump Bomb Boost",
+      "collectsItems": [2],
       "requires": [
         "canWallJumpBombBoost"
       ],
@@ -869,8 +876,9 @@
     },
     {
       "id": 38,
-      "link": [5, 2],
+      "link": [5, 1],
       "name": "Tricky Speed HiJump, Walljumpless",
+      "collectsItems": [2],
       "requires": [
         "HiJump",
         "canTrickyJump",
@@ -884,8 +892,9 @@
     },
     {
       "id": 39,
-      "link": [5, 2],
+      "link": [5, 1],
       "name": "Springwall",
+      "collectsItems": [2],
       "requires": [
         "canSpringwall",
         "canResetFallSpeed"
